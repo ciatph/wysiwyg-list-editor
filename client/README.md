@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## wysiwyg-list-editor / client
 
-## Getting Started
+This directory will contain the web user interfaces for interacting with the **wysiwyg-list-editor** CRUD API's.
 
-First, run the development server:
+## Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The following dependencies are used for this project's localhost development environment. Feel free to use other dependency versions as needed.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Windows 10 OS
+2. nvm for Windows v1.1.9
+3. NodeJS 16.14.2 installed using nvm
+   - node v16.14.2
+   - npm v8.5.0
+4. MongoDB Community Edition (for Windows)
+  - version 4.4.0
+  - architecture: x86_64
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Core Libraries/Frameworks
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+(See package.json for more information)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. NextJS 13.0.6
+2. React 18.2.0
+3. Material-UI v5.10.1
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Install dependencies.<br>
+`npm install`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Set up the environment variables. Create a `.env`, `.env.local` and a `.env.development` files inside the root project directory with reference to the `.env.example` file.<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   | Variable Name         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+   | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | NEXT_PUBLIC_BASE_PATH | Root directory path name that NextJS uses for assets, media and client-side routing for the app.<br><br>Set its value to blank `''` when working on development mode in localhost.<br><br>Set its value to the sub-directory name where the exported NextJS app is to be deployed, i.e. `/<YOUR_REPOSITORY_NAME>` when<br> deploying on a repository (sub-directory) of a root GitHub Pages site, i.e, on `https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPOSITORY_NAME>` |
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Run the project in development mode.<br>
+`npm run dev`
+2. Launch the development website from:<br>
+`http://localhost:3000`
+3. Check for lint errors.
+   - `npm run lint` (check lint errors)
+   - `npm run lint:fix` (fix lint errors)
+5. Export the static website.<br>
+`npm run export`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+@ciatph<br>
+20221211
