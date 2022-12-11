@@ -4,7 +4,7 @@
 
 It's main goal is to allow creative ~~unconvenstional, inconsistent~~ ways of writing bullet lists and preseve their formatting as HTML list `<ul>` and `<li>` tags, which can serve as ***CLEAN*** input to other services.
 
-This app is inspired to solve the inconsistencies mentioned in dealing with bullet list text on excel files in the [excel-parser-uploader]([excel-parser-uploader](https://github.com/ciatph/excel-parser-uploader)) mini project.
+This app is inspired to solve the inconsistencies mentioned in dealing with bullet list text on excel files in the [excel-parser-uploader](https://github.com/ciatph/excel-parser-uploader) mini project.
 
 ## Installation
 
