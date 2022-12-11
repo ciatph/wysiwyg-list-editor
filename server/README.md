@@ -30,6 +30,7 @@ The following dependencies are used for this project's localhost development env
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ALLOW_CORS      | Allow Cross-Origin Resource Sharing (CORS) on the API endpoints.<br><br>Default value is `1`, allowing XHR access to domains listed in `ALLOWED_ORIGINS`.<br>Setting to `0` will make all endpoints reject XHR requests from all domains, but allow requests from Postman. |
 | ALLOWED_ORIGINS | IP/domain origins in comma-separated values that are allowed to access the API if `ALLOW_CORS=1`.<br>Include `http://localhost:3000` by default to allow CORS access to the **/client** app.                                                                               |
+| MONGO_URI       | MongoDB connection string.<br>Default value uses the localhost MongoDB connection string.                                                                                                                                                                                  |
 
 ## Available Scripts
 
