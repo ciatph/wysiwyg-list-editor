@@ -10,6 +10,7 @@
       "@/public/*": ["public/*"],
       // "@/services/*": ["src/services/*"],
       "@/styles/*": ["styles/*"],
+      "@/store/*": ["src/store/*"]
       // "@/utils/*": ["src/utils/*"]
     }
   }
