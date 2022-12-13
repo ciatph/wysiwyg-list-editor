@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
+import Snackbar from '@mui/material/Snackbar'
 import Typography from '@mui/material/Typography'
 import CKEditor from '@/components/ui/ckeditor'
 import styles from './styles'
@@ -12,6 +14,7 @@ import ContentPasteIcon from '@mui/icons-material/ContentPaste'
 
 function EditorComponent ({ data, handleSetData }) {
   const [editorLoaded, setEditorLoaded] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const mounted = useRef(false)
 
   useEffect(() => {
@@ -27,8 +30,8 @@ function EditorComponent ({ data, handleSetData }) {
         Bullet/Numbered Lists to HTML
       </Typography>
 
-      {/** Editor UI */}
       <Grid container sx={styles.topMargin} spacing={2}>
+        {/** Editor UI */}
         <Grid item xs={12} md={6}>
           <CKEditor
             name="description"
@@ -46,8 +49,10 @@ function EditorComponent ({ data, handleSetData }) {
               variant='contained'
               disableElevation
               startIcon={<ContentPasteIcon />}
+              disabled={data.length === 0}
               onClick={() => {
                 navigator.clipboard.writeText(data)
+                setIsOpen(prev => !prev)
               }}
             >
               Copy
@@ -60,6 +65,21 @@ function EditorComponent ({ data, handleSetData }) {
           </Box>
         </Grid>
       </Grid>
+
+      {/** Snackbar info */}
+      <Snackbar
+        open={isOpen}
+        autoHideDuration={3500}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        onClose={() => setIsOpen(prev => !prev)}
+      >
+        <Alert
+          severity="success"
+          sx={{ width: '100%' }}
+        >
+          Copied to clipboard!
+        </Alert>
+      </Snackbar>
     </Container>
   )
 }
