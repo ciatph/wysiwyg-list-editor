@@ -3,8 +3,9 @@ name: Deploy to GitHub Pages
 # This workflow will trigger on any tag/release created on *any* branch
 # Make sure to create tags/releases only from the "master" branch for consistency
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - feature/ciatph-21
 
 jobs:
   lint-export-client:
