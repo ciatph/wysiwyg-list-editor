@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "ciatph-web"
+  },
+  "targets": {
+    "ciatph-web": {
+      "hosting": {
+        "dev": [
+          "listeditor"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
