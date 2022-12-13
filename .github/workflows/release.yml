@@ -1,18 +1,17 @@
-name: Deploy to Firebase Hosting
+name: Deploy to GitHub Pages
 
-# This workflow deploys the static-generated nextjs app to Firebase Hosting
-# Triggered by push to the "dev" branch
+# This workflow will trigger on any tag/release created on *any* branch
+# Make sure to create tags/releases only from the "master" branch for consistency
 on:
-  push:
-    branches:
-      - dev
+  release:
+    types: [published]
 
 jobs:
   lint-export-client:
     name: Lint and Export client
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_PATH: ''
+      NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
@@ -32,28 +31,30 @@ jobs:
         run: |
           cd client
           npm run export
+          mv out/404/index.html out/404.html
+      - name: Disable Jekyll
+        run: touch client/out/.nojekyll
       - name: Archive Development Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dev-app
-          path: |
-            client/out
-            client/firebase.json
-            client/.firebaserc
+          name: main-out
+          path: client/out
           retention-days: 3
 
   deploy-client:
-    name: Deploy Client to Firebase Hosting
+    name: Deploy client to Github Pages
     needs: lint-export-client
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: dev-app
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+          name: main-out
+      - name: List files for publish
+        run: ls -l -a
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          args: deploy --only hosting:dev
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
