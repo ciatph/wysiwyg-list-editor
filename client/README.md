@@ -11,9 +11,6 @@ The following dependencies are used for this project's localhost development env
 3. NodeJS 16.14.2 installed using nvm
    - node v16.14.2
    - npm v8.5.0
-4. MongoDB Community Edition (for Windows)
-  - version 4.4.0
-  - architecture: x86_64
 
 ### Core Libraries/Frameworks
 
